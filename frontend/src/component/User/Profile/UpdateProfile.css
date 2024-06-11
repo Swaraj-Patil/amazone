@@ -1,0 +1,128 @@
+.updateProfile {
+    background-color: #fff;
+
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.updateProfile > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: center; */
+
+    width: 40vw;
+}
+
+.updateProfile h1{
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 10px 0 20px 0;
+}
+
+.updateProfile__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.updateProfile__form > form {
+    width: 100%;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+}
+
+.updateProfile__form > form > div {
+    border-bottom: 1px solid #E7E7E7;
+    color: #111;
+    box-sizing: border-box;
+    padding: 14px 18px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.updateProfile__form > form > div:last-child {
+    border-bottom: unset;
+}
+
+.updateProfile__form > form > div > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.updateProfile__form > form label {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.updateProfile__form > form input,
+.updateProfile__form > form textarea {
+    border: none;
+    outline: none;
+    padding: 5px;
+    resize: none;
+    border-radius: 4px;
+    width: 400px;
+}
+.updateProfile__form > form input.focus,
+.updateProfile__form > form textarea.focus {
+    border: 1px solid rgb(212, 212, 212);
+    margin-top: 5px;
+}
+/* .updateProfile__form > form input:focus,
+.updateProfile__form > form textarea:focus {
+    outline: 2px solid #F90;
+    box-shadow: 0 0 2px #F90, 0 0 0 3px rgba(255, 153, 0, .5);
+} */
+
+.updateProfile__form > form button {
+    background: transparent;
+    color: #0F1111;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 30px;
+    border-radius: 8px;
+    border: 1px solid #D5D9D9;
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+}
+.updateProfile__form > form button:hover {
+    background: #F7FAFA;
+    border-color: #D5D9D9;
+}
+
+.updateProfile__form > button {
+    color: #0F1111;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px;
+    border-radius: 8px;
+    background: #FFD814;
+    border: 1px solid #FCD200;
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+    margin: 1rem 0;
+}
+
+.updateProfile__form > button:hover {
+    background: #F7CA00;
+    border-color: #F2C200;
+}
+
+.MuiBreadcrumbs-root {
+    margin: 1rem 0 !important;
+}
+
+.MuiBreadcrumbs-root li a {
+    color: #0066c0 !important;
+    font-size: 13px;
+}
+
+.MuiBreadcrumbs-root li p {
+    color: #c45500 !important;
+    font-size: 13px;
+}

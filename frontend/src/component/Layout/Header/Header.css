@@ -1,0 +1,262 @@
+.header {
+    height: 60px;
+    background-color: var(--color-primary);
+
+    display: flex;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Bootstrap unset */
+/* .header p {
+    margin-top: unset !important;
+    margin-bottom: unset !important;
+}
+
+.header svg {
+    overflow: unset !important;
+    vertical-align: unset !important;
+}
+
+.header input {
+    overflow: unset !important;
+    margin: unset !important;
+    font-family: unset !important;
+    font-size: unset !important;
+    line-height: unset !important;
+}
+
+.header img {
+    vertical-align: unset !important;
+    border-style: unset !important;
+} */
+
+.header__logo {
+    width: 100px;
+    object-fit: contain;
+    margin: 7px 20px;
+    margin-top: 18px;
+
+    /* Bootstrap unset */
+    /* vertical-align: unset; */
+}
+
+.header__location {
+    color: white;
+    margin: 0 10px;
+    margin-left: unset;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__search {
+    display: flex;
+    flex: 1;
+    align-items: center;
+
+    border-radius: 24px; /* Isn't working */
+    margin: 0 1%;
+
+    position: relative;
+}
+
+.header__preSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    left: 0;
+    z-index: 3;
+
+    background-color: #f3f3f3;
+    color: #555;
+    height: 30px;
+    padding: 5px 8px;
+    font-size: 13px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    transition: all .1s linear;
+}
+.header__preSearch:hover {
+    background-color: #e5e5e5;
+    cursor: pointer;
+}
+
+.header__preSearch > svg {
+    margin-top: 3px;
+    font-size: 20px;
+}
+
+.header__searchInput {
+    height: 20px;
+    padding: 10px;
+    padding-left: 3.5rem;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+
+    z-index: 2;
+}
+.header__searchInput:focus {
+    outline: 2px solid #F90;
+    box-shadow: 0 0 2px #F90, 0 0 0 3px rgba(255, 153, 0, .5)
+}
+
+.header__searchIcon {
+    background-color: var(--color-secondary);
+    padding: 5px 10px;
+    height: 30px !important;   
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header__flag {
+    background: url('../../../assets/india-flag.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.header__option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header__optionLineOne {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.header__optionLineTwo {
+    font-size: 14px;
+    font-weight: 700;
+
+    position: relative;
+}
+
+.header__optionBasket {
+    display: flex;
+    align-items: center;
+
+    color: white !important;
+    margin-right: 10px;
+}
+
+.header__basketCount {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px !important;
+    
+    color: var(--color-secondary);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header__optionBasket img {
+    width: 30px;
+    transform: translateY(5px);
+    margin-right: 2px;
+}
+
+.header__logout {
+    position: absolute;
+    top: 140%;
+    right: -20%;
+    
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    min-width: 150px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.13);
+    display: none;
+    flex-direction: column;
+}
+.header__logout::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid white;
+
+    position: absolute;
+    bottom: 100%;
+    right: 10%;
+}
+
+.header__logout.active {
+    align-items: center;
+    display: flex;
+}
+
+.header__dropdown {
+    position: relative;
+}
+.header__dropdown::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 10px;
+    /* background-color: #f00; */
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
+.header__logout > h4 {
+    font-size: 16px;
+    color: black;
+    font-weight: 700;
+}
+
+.header__logout > ul {
+    padding: 10px 0;
+
+}
+
+.header__logout > ul > li {
+    color: #444;
+    font-size: 13px;
+    font-weight: 400;
+    list-style: none;
+}
+.header__logout > ul > li:hover {
+    color: var(--color-secondary-hover);
+    text-decoration: underline;
+}
+
+.header__logout button {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+    border: none;
+}

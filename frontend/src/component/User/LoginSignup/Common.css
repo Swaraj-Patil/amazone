@@ -1,0 +1,31 @@
+.login__register > ul  {
+    padding: 0;
+    margin: 5px 0 0 5px;
+}
+
+.login__register > ul > li {
+    color: #333;
+    font-size: 13px;
+}
+
+.login__register > h4 {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.255;
+    padding-bottom: 4px;
+}
+
+.login__register > p {
+    font-size: 13px;
+    color: #111;
+    line-height: 19px;
+    padding: 0;
+}
+
+.login__register > p > a {
+    color: var(--color-links) !important;
+}
+
+.login__register > p > a:hover {
+    text-decoration: underline !important;
+}

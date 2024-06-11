@@ -1,0 +1,31 @@
+
+.footer__alt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: 11px;
+    background-color: #fff;
+    height: 42vh;
+}
+
+.footer__alt>ul {
+    display: flex;
+    margin: 2rem 0 1rem 0;
+    padding: 0;
+}
+
+.footer__alt>ul>li {
+    list-style: none;
+    padding: 0 .8rem;
+    color: var(--color-links);
+}
+
+.footer__alt > ul > li > a {
+    cursor: pointer;
+}
+
+.footer__alt>p {
+    padding: 0 1rem;
+    color: #333;
+}

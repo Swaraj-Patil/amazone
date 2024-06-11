@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember.ttf');
+}
+
+
+:root {
+  --color-primary: #131921;
+  --color-secondary: #FEBD69;
+  --color-secondary-hover: #CD9042;
+  --color-links: #0066C0 !important;
+
+  /* --font-base: dasd; */
+  /* --font-alt: asdas; */
+}
+
+*, ::after, ::after {
+  margin: 0;
+}
+
+body {
+  background-color: rgb(234, 237, 237);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-family: 'Amazon Ember', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: unset !important;
+  font-weight: unset !important;
+  font-size: unset !important;
+}
+
+a {
+  color: unset !important;
+  text-decoration: none !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* ::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #f00;
+} */
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}

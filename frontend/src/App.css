@@ -1,0 +1,100 @@
+.amazons-choice {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 4px 15px 4px 8px;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 12px;
+    position: relative;
+}
+
+.amazons-choice::after {
+    content: '';
+    width: calc(100% + 0px);
+    height: calc(100% + 1px);
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 90% 100%)
+}
+
+.amazons-choice > span {
+    color: var(--color-secondary);
+}
+
+.line-break {
+    width: 100%;
+    height: 1px;
+    background-color: lightgray;
+    margin: 10px 0;
+}
+
+.green-color {
+    color: #007600;
+}
+
+.red-color {
+    /* color: #CC0C39; */
+    color: #B12704;
+}
+
+.app__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-primary {
+    background: linear-gradient(#e9dbb7 0%, #F0C148 100%);
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #A88734 #9C7E31 #846A29;
+    cursor: pointer;
+}
+.button-primary:hover {
+    background: linear-gradient(#ebd49a 0%, #f4be37 100%);
+}
+
+.button-secondary {
+    background: linear-gradient(#ffffff 0%, rgb(230, 229, 229) 100%);
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: darkgray;
+    cursor: pointer;
+}
+.button-secondary:hover {
+    background: linear-gradient(rgb(244, 243, 243) 0%, rgb(225, 225, 225) 100%);
+}
+
+.MuiRating-icon {
+    color: #FFA41C;
+}
+
+.button-new {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+    background: #FFD814;
+    border: 1px solid #FCD200;
+    padding: 0 16px;
+    width: 100%;
+    color: #0F1111;
+    font-size: 13px;
+    line-height: 29px;
+    cursor: pointer;
+}
+
+.button-new:hover {
+    background: #F7CA00;
+    border-color:#F2C200;
+}
+
+.app_note {
+    font-size: 12px;
+    line-height: 16px;
+    color: #0F1111;
+    width: 80%;
+    margin: 10px 0;
+}

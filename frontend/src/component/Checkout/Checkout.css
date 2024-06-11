@@ -1,0 +1,52 @@
+.checkout {
+    background-color: #fff !important;
+}
+
+.checkout > nav {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem 6rem;
+    border-bottom: 1px solid #DDD;
+    background-image: url('../../assets/checkout-header.png');
+    /* background-position-y: -13px; */
+}
+
+.checkout > nav > div:first-child {
+    width: 120px;
+}
+
+.checkout > nav > div:first-child> img {
+    width: 100%;
+}
+
+.checkout > nav > h1 {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+}
+
+.checkout__wrapper {
+    display: flex;
+    padding: 1rem 4rem;
+}
+
+
+.checkout__wrapper > div:first-child {
+    width: 80vw;
+}
+
+.checkout__wrapper > div:first-child > ol > li > p {
+    color: #C45500;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.checkout__address {
+    border: 1px solid #D5D9D9;
+    border-radius: 8px;
+    padding: 1rem 0;
+}
