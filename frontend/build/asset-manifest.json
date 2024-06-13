@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ebfcad55.css",
+    "main.js": "/static/js/main.13a14912.js",
+    "static/media/applewatch.png": "/static/media/applewatch.e18e646c24fea81e08c2.png",
+    "static/media/Amazon Ember.ttf": "/static/media/Amazon Ember.4c5f8783fc6015d993cd.ttf",
+    "static/media/banner4.jpg": "/static/media/banner4.deb7883167d98ce2cada.jpg",
+    "static/media/banner2.jpg": "/static/media/banner2.112009d6736a52c0846d.jpg",
+    "static/media/banner5.jpg": "/static/media/banner5.76d61aee26c95e2819dc.jpg",
+    "static/media/banner1.jpg": "/static/media/banner1.18cfd2bc7a2b6e90e365.jpg",
+    "static/media/banner3.jpg": "/static/media/banner3.0b62e2b92e218b3bf4de.jpg",
+    "static/media/logo-dark.png": "/static/media/logo-dark.8c8716e81f0dec58acc4.png",
+    "static/media/logo-light.png": "/static/media/logo-light.2bef34c3c4c1e3567211.png",
+    "static/media/product1.webp": "/static/media/product1.57f37b2ca96aa57cf2d7.webp",
+    "static/media/prime-icon.svg": "/static/media/prime-icon.3c0154ff1390ab3934f1429064f24d87.svg",
+    "static/media/india-flag.svg": "/static/media/india-flag.f1392c76f9306f034770.svg",
+    "index.html": "/index.html",
+    "main.ebfcad55.css.map": "/static/css/main.ebfcad55.css.map",
+    "main.13a14912.js.map": "/static/js/main.13a14912.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ebfcad55.css",
+    "static/js/main.13a14912.js"
+  ]
+}
