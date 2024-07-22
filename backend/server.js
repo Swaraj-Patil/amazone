@@ -37,6 +37,6 @@ process.on('unhandledRejection', error => {
     server.close(() => {
         process.exit(1)
     })
-
-
 })
+
+module.exports = app

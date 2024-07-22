@@ -2,12 +2,10 @@
     "version": 2,
     "name": "amazone",
     "builds": [
-      { "src": "backend/server.js", "use": "@vercel/node" },
-      { "src": "frontend/package.json", "use": "@vercel/static-build", "config": { "distDir": "frontend/build" } }
+      { "src": "backend/server.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/api/(.*)", "dest": "backend/server.js" },
-      { "src": "/(.*)", "dest": "frontend/build/$1" }
+      { "src": "/(.*)", "dest": "backend/server.js" }
     ]
   }
   
