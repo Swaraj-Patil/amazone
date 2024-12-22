@@ -16,7 +16,8 @@ import {
   UpdateProfile,
   UpdatePassword,
   ForgotPassword,
-  ResetPassword
+  ResetPassword,
+  AddressList
 } from './component'
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom'
@@ -55,6 +56,7 @@ function App() {
           <Route exact path='/me/update' element={<UpdateProfile />} />
           <Route exact path='/password/update' element={<UpdatePassword />} />
 
+          <Route exact path='/addresses' element={<AddressList />} />
           <Route exact path='/checkout' element={<Checkout />} />
         </Route>
 

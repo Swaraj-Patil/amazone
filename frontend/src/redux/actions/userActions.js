@@ -1,3 +1,4 @@
+import { config, mediaConfig } from '../../utils/constants'
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
@@ -31,12 +32,6 @@ export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: LOGIN_REQUEST })
 
-        const config = {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-
         const { data } = await axios.post(
             '/api/v1/login',
             { email, password },
@@ -60,16 +55,12 @@ export const register = (userData) => async (dispatch) => {
     try {
         dispatch({ type: REGISTER_REQUEST })
 
-        const config = {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }
+
 
         const { data } = await axios.post(
             '/api/v1/register',
             userData,
-            config
+            mediaConfig
         )
 
         dispatch({
@@ -119,20 +110,13 @@ export const logout = () => async (dispatch) => {
 
 // Update profile
 export const updateProfile = (userData) => async (dispatch) => {
-    console.log('userData', userData)
     try {
         dispatch({ type: UPDATE_PROFILE_REQUEST })
-
-        const config = {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }
 
         const { data } = await axios.put(
             '/api/v1/me/update',
             userData,
-            config
+            mediaConfig
         )
 
         dispatch({
@@ -151,12 +135,6 @@ export const updateProfile = (userData) => async (dispatch) => {
 export const updatePassword = passwords => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_PASSWORD_REQUEST })
-
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
 
         const { data } = await axios.put(
             '/api/v1/password/update',
@@ -181,12 +159,6 @@ export const forgotPassword = email => async (dispatch) => {
     try {
         dispatch({ type: FORGOT_PASSWORD_REQUEST })
 
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-
         const { data } = await axios.post(
             '/api/v1/password/forgot',
             email,
@@ -208,12 +180,6 @@ export const forgotPassword = email => async (dispatch) => {
 export const resetPassword = (token, passwords) => async (dispatch) => {
     try {
         dispatch({ type: RESET_PASSWORD_REQUEST })
-
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
 
         const { data } = await axios.put(
             `/api/v1/password/reset/${token}`,
@@ -237,13 +203,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
 // export const updateProfileCover = (userData) => async (dispatch) => {
 //     try {
 //         dispatch({ type: UPDATE_COVER_REQUEST })
-
-//         const config = {
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         }
-
+//
 //         const { data } = await axios.put(
 //             '/api/v1/me/cover/update',
 //             userData,
@@ -261,8 +221,6 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
 //         })
 //     }
 // }
-
-
 
 // Clearing errors
 export const clearErrors = () => async (dispatch) => {

@@ -34,7 +34,7 @@ const Profile = () => {
             imgUrl: 'https://m.media-amazon.com/images/G/31/x-locale/cs/ya/images/address-map-pin._CB485934183_.png',
             title: 'Your Address',
             subtitle: 'Edit address for orders and gifts',
-            url: '/address'
+            url: '/addresses'
         },
         {
             imgUrl: 'https://m.media-amazon.com/images/G/31/x-locale/cs/ya/images/sign-in-lock._CB485931504_.png',

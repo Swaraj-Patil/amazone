@@ -2,7 +2,7 @@ import React from 'react'
 import './ProductCard.css'
 import { Rating } from '@mui/material'
 import { StarBorder } from '@mui/icons-material'
-import { 
+import {
     // product1,
     primeIcon
 } from '../../assets'
@@ -30,9 +30,8 @@ const ProductCard = ({ product }) => {
 
     return (
         <Link to={`/product/${product._id}`} className='productcard'>
-            <div>
-                {/* <img src={product?.images && product?.images[0].url} alt='Product' /> */}
-                <img src={applewatch} alt='Product' />
+            <div className=''>
+                <img src={product?.images?.[0].url || applewatch} alt='Product' />
             </div>
 
             <div className='productcard__info'>

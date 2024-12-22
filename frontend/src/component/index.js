@@ -11,6 +11,7 @@ import UpdateProfile from "./User/Profile/UpdateProfile";
 import UpdatePassword from "./User/LoginSignup/UpdatePassword";
 import ForgotPassword from "./User/LoginSignup/ForgotPassword";
 import ResetPassword from "./User/LoginSignup/ResetPassword";
+import AddressList from "./Address/AddressList";
 
 export {
     Home,
@@ -25,5 +26,6 @@ export {
     UpdateProfile,
     UpdatePassword,
     ForgotPassword,
-    ResetPassword
+    ResetPassword,
+    AddressList,
 }

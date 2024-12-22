@@ -118,7 +118,7 @@
 }
 
 .MuiBreadcrumbs-root li a {
-    color: #0066c0 !important;
+    color: var(--color-links) !important;
     font-size: 13px;
 }
 

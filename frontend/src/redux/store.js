@@ -7,15 +7,15 @@ const middleware = [thunk]
 
 let initialState = {
     cart: {
-        cartItems: localStorage.getItem('cartItems') 
-            ? JSON.parse(localStorage.getItem('cartItems')) 
+        cartItems: localStorage.getItem('cartItems')
+            ? JSON.parse(localStorage.getItem('cartItems'))
             : []
     }
 }
 
 const store = createStore(
-    rootReducer, 
-    initialState, 
+    rootReducer,
+    initialState,
     composeWithDevTools(applyMiddleware(...middleware))
 )
 

@@ -5,7 +5,7 @@ import { cartReducer } from "./cartReducer";
 // import { toastsReducer as toasts } from 'react-toastify-redux'
 
 import { register } from 'swiper/element/bundle'
-import { addressReducer, createAddressReducer, getAddressesReducer } from "./addressReducer";
+import { addressReducer, createAddressReducer, getAddressesReducer, getCountriesReducer, getStatesReducer } from "./addressReducer";
 register()
 
 const rootReducer = combineReducers({
@@ -17,7 +17,9 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     createAddress: createAddressReducer,
     allAddresses: getAddressesReducer,
-    address: addressReducer
+    address: addressReducer,
+    countries: getCountriesReducer,
+    states: getStatesReducer,
 })
 
 export default rootReducer

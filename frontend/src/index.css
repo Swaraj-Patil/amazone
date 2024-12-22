@@ -1,6 +1,58 @@
+/* Regular */
 @font-face {
   font-family: 'Amazon Ember';
-  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember.ttf');
+  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember.ttf') format('truetype');
+  font-weight: medium;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember\ Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Italic */
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember\ Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember\ Bold\ Italic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Additional Styles as Needed */
+/* Amazon Ember Display Italic */
+@font-face {
+  font-family: 'Amazon Ember Display';
+  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember\ Display\ Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Amazon Ember Mono Regular */
+@font-face {
+  font-family: 'Amazon Ember Mono';
+  src: url('./assets/amazon-ember-cufonfonts/Amazon\ Ember\ Mono.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
@@ -8,13 +60,15 @@
   --color-primary: #131921;
   --color-secondary: #FEBD69;
   --color-secondary-hover: #CD9042;
-  --color-links: #0066C0 !important;
+  --color-links: #007185 !important;
 
   /* --font-base: dasd; */
   /* --font-alt: asdas; */
 }
 
-*, ::after, ::after {
+*,
+::after,
+::after {
   margin: 0;
 }
 
@@ -36,9 +90,12 @@ a {
   text-decoration: none !important;
 }
 
+h1 {
+  font-family: 'Amazon Ember Display', Arial, sans-serif;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Amazon Ember Mono', Courier, monospace,
 }
 
 /* ::-webkit-scrollbar-track {
@@ -55,5 +112,17 @@ code {
 ::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
-  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
