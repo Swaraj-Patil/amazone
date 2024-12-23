@@ -10,7 +10,8 @@ export const mediaConfig = {
     }
 }
 
-
 export const CSCHeaders = {
     'X-CSCAPI-KEY': 'SUprdVpFY0cyenlrOTFYUDlpaVJweVJFS0FjRFVZOHN1QkVOWGNhQw=='
 }
+
+export const upiRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+$/
