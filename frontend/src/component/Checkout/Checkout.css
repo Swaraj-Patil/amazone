@@ -38,7 +38,7 @@
     width: 80vw;
 }
 
-.checkout__wrapper>div:first-child>ol>li>p {
+.checkout__titles {
     color: #C45500;
     font-weight: 700;
     font-size: 18px;
@@ -76,14 +76,58 @@
     text-decoration: underline;
 }
 
-.address__list>li {
+.address__list li {
     display: flex;
     align-items: center;
     column-gap: 10px;
     font-size: 14px;
 }
 
-.address__list>li>p {
+.address__list li>div {
     display: flex;
     flex-direction: column;
+}
+
+.card__modal-2 {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2.5rem;
+}
+
+.card__modal-3 {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 10px;
+
+    background-color: #f0f2f2;
+    padding: 16px 20px;
+    border-top: 1px solid #d5d9d9;
+}
+
+input[type="radio"].custom__radio {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #777;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+input[type="radio"].custom__radio:checked {
+    border-width: 5px;
+}
+
+input[type="radio"].custom__radio:hover {
+    border-color: #005f6a;
+}
+
+
+input[type="radio"].custom__radio:checked {
+    border-color: #007185;
 }

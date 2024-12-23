@@ -69,7 +69,7 @@ export const createAddressReducer = (state = { address: {} }, action) => {
             return {
                 ...state,
                 loading: false,
-                success: action.payload.success,
+                success: action.payload,
                 address: action.payload.address
             }
 

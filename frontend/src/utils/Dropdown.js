@@ -16,7 +16,7 @@ const Dropdown = ({
 
     const handleSelectChange = event => {
         const selectedValue = event.target.value
-        const selectedOption = children.find(child => child.props.value === selectedValue)
+        const selectedOption = children.find(child => child.props.value == selectedValue)
 
         if (selectedOption) {
             onChange(selectedOption.props.data, inputProps.id || 'dropdown')
@@ -42,7 +42,7 @@ const Dropdown = ({
                     {...inputProps}
                 >
                     <option value="" disabled hidden>
-                        {inputProps.placeholder || 'Choose a State'}
+                        {inputProps.placeholder || 'Please select an option'}
                     </option>
                     {children && Children.map(children, child =>
                         cloneElement(child, {

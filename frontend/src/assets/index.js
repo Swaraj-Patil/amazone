@@ -2,6 +2,7 @@ import logoLight from './logo-light.png'
 import logoDark from './logo-dark.png'
 import primeIcon from './prime-icon.svg'
 import cartIcon from './cart.png'
+import fulfilled from './fulfilled.png'
 
 import banner1 from './banner1.jpg'
 import banner2 from './banner2.jpg'
@@ -28,7 +29,7 @@ export {
     logoLight,
     logoDark,
     cartIcon,
-
+    fulfilled,
     primeIcon,
 
     banner1,

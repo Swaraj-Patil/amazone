@@ -6,6 +6,7 @@ import { cartReducer } from "./cartReducer";
 
 import { register } from 'swiper/element/bundle'
 import { addressReducer, createAddressReducer, getAddressesReducer, getCountriesReducer, getStatesReducer } from "./addressReducer";
+import paymentReducer from "./paymentReducer";
 register()
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     address: addressReducer,
     countries: getCountriesReducer,
     states: getStatesReducer,
+    payment: paymentReducer,
 })
 
 export default rootReducer

@@ -1,7 +1,7 @@
 import React from 'react'
 import './utils.css'
 
-const Input = ({ label = '', inputProps, value, onChange }) => {
+const Input = ({ label = '', inputProps = {}, value, onChange }) => {
     return (
         <div style={{
             color: '#0f1111',

@@ -19,7 +19,7 @@
     clip-path: polygon(100% 0, 100% 0, 100% 100%, 90% 100%)
 }
 
-.amazons-choice > span {
+.amazons-choice>span {
     color: var(--color-secondary);
 }
 
@@ -53,6 +53,7 @@
     border-color: #A88734 #9C7E31 #846A29;
     cursor: pointer;
 }
+
 .button-primary:hover {
     background: linear-gradient(#ebd49a 0%, #f4be37 100%);
 }
@@ -64,7 +65,9 @@
     border: 1px solid;
     border-color: darkgray;
     cursor: pointer;
+    color: '#0f1111';
 }
+
 .button-secondary:hover {
     background: linear-gradient(rgb(244, 243, 243) 0%, rgb(225, 225, 225) 100%);
 }
@@ -75,7 +78,7 @@
 
 .button-new {
     border-radius: 8px;
-    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+    box-shadow: 0 2px 5px 0 rgba(213, 217, 217, .5);
     background: #FFD814;
     border: 1px solid #FCD200;
     padding: 0 16px;
@@ -88,7 +91,7 @@
 
 .button-new:hover {
     background: #F7CA00;
-    border-color:#F2C200;
+    border-color: #F2C200;
 }
 
 .app_note {
@@ -97,4 +100,23 @@
     color: #0F1111;
     width: 80%;
     margin: 10px 0;
+}
+
+.prevent-select {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.app__link {
+    color: var(--color-links) !important;
+    cursor: pointer;
+}
+
+.app__link:hover {
+    text-decoration: underline !important;
+    color: #222 !important;
 }
