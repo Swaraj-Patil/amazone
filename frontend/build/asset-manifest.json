@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.4ca7130e.css",
-    "main.js": "/static/js/main.32fbe6a4.js",
+    "main.js": "/static/js/main.849ef7c7.js",
     "static/media/applewatch.png": "/static/media/applewatch.e18e646c24fea81e08c2.png",
     "static/media/Amazon Ember.ttf": "/static/media/Amazon Ember.4c5f8783fc6015d993cd.ttf",
     "static/media/Amazon Ember Bold.ttf": "/static/media/Amazon Ember Bold.aaade75020189dfc336e.ttf",
@@ -26,10 +26,10 @@
     "static/media/india-flag.svg": "/static/media/india-flag.f1392c76f9306f034770.svg",
     "index.html": "/index.html",
     "main.4ca7130e.css.map": "/static/css/main.4ca7130e.css.map",
-    "main.32fbe6a4.js.map": "/static/js/main.32fbe6a4.js.map"
+    "main.849ef7c7.js.map": "/static/js/main.849ef7c7.js.map"
   },
   "entrypoints": [
     "static/css/main.4ca7130e.css",
-    "static/js/main.32fbe6a4.js"
+    "static/js/main.849ef7c7.js"
   ]
 }
