@@ -1,0 +1,2 @@
+export const SET_ACCORDION = 'SET_ACCORDION'
+export const GET_ACCORDION = 'GET_ACCORDION'

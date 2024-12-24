@@ -1,10 +1,10 @@
 const express = require('express')
 const {
-    getAllProducts, 
-    createProduct, 
-    updateProduct, 
-    deleteProduct, 
-    getProductDetails, 
+    getAllProducts,
+    createProduct,
+    updateProduct,
+    deleteProduct,
+    getProductDetails,
     createReview,
     getAllReviews,
     deleteReview

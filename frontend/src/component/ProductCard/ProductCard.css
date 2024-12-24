@@ -8,14 +8,18 @@
     /* height: 100%; */
     /* max-width: 100px; */
     background-color: #fff;
+    border: 1px solid #f5f5f5;
+    border-radius: 4px;
 
     position: relative;
     z-index: 1;
 }
 
-/* .productcard>div:first-child {
-    background-color: #F7F7F7;
-} */
+.productcard>div:first-child {
+    /* background-color: #F7F7F7; */
+    border-right: 1px solid #F1F1F1;
+    padding: 10px;
+}
 
 .productcard>div>img {
     max-width: 200px;

@@ -1,0 +1,14 @@
+.order__card {
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.order__card>div {
+    padding: 14px 18px;
+}
+
+.order__card>div:first-child {
+    background-color: #f0f2f2;
+}

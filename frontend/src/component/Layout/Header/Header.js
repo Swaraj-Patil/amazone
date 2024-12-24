@@ -50,7 +50,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    setCartItemCount(cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0))
+    setCartItemCount(cartItems?.reduce((acc, cartItem) => acc + cartItem.quantity, 0))
   }, [cartItems])
 
   // useEffect(() => {
@@ -62,7 +62,7 @@ const Header = () => {
 
   return (
     <Fragment>
-      { loading ? <Loader /> : (
+      {loading ? <Loader /> : (
         <div className='header'>
 
           <Link to='/'><img className='header__logo' src={logoLight} alt='AMAZONE' /></Link>
@@ -71,7 +71,7 @@ const Header = () => {
             <FmdGoodOutlined />
             <div>
               <p className='header__optionLineOne'>
-                { isAuthenticated ? `Deliver to ${user.name}`: 'Hello' }
+                {isAuthenticated ? `Deliver to ${user.name}` : 'Hello'}
               </p>
               <p className='header__optionLineTwo'>Select your address</p>
             </div>
@@ -79,8 +79,8 @@ const Header = () => {
 
           <div className='header__search'>
             <div className='header__preSearch'>All <ArrowDropDown /></div>
-            <Backdrop 
-              open={open} 
+            <Backdrop
+              open={open}
               style={{ zIndex: 1 }}
             />
             <input
@@ -94,9 +94,9 @@ const Header = () => {
               onKeyDown={handleKeys}
               ref={searchInput}
             />
-            <Search 
-              className='header__searchIcon' 
-              onClick={handleSearch} 
+            <Search
+              className='header__searchIcon'
+              onClick={handleSearch}
             />
           </div>
 
@@ -107,28 +107,28 @@ const Header = () => {
             </div>
 
             <Link to={isAuthenticated ? '/account' : '/login'}>
-              <div 
-                className='header__option header__dropdown' 
-                onMouseEnter={() => {isAuthenticated && accountDropdown.current.classList.add('active')}}
-                onMouseLeave={() => {isAuthenticated && accountDropdown.current.classList.remove('active')}}
+              <div
+                className='header__option header__dropdown'
+                onMouseEnter={() => { isAuthenticated && accountDropdown.current.classList.add('active') }}
+                onMouseLeave={() => { isAuthenticated && accountDropdown.current.classList.remove('active') }}
               >
                 <span className='header__optionLineOne'>
-                  { `Hello, ${isAuthenticated ? user.name : 'User' }` }
+                  {`Hello, ${isAuthenticated ? user.name : 'User'}`}
                 </span>
                 <span className='header__optionLineTwo'>
                   Account & Lists &nbsp;
                   <ArrowDropDown style={{ fontSize: 16, transform: 'translateY(3px)' }} />
-                    <div
-                      className='header__logout' 
-                      ref={accountDropdown}
-                    >
-                      <h4>Your Account</h4>
-                      <ul>
-                        <li onClick={() => navigate('/account')}>Your Account</li>
-                        <li onClick={() => navigate('/orders')}>Your Orders</li>
-                      </ul>
-                      <button className='button-primary' onClick={handleLogout}>Logout</button>
-                    </div>
+                  <div
+                    className='header__logout'
+                    ref={accountDropdown}
+                  >
+                    <h4>Your Account</h4>
+                    <ul>
+                      <li onClick={() => navigate('/account')}>Your Account</li>
+                      <li onClick={() => navigate('/orders/me')}>Your Orders</li>
+                    </ul>
+                    <button className='button-primary' onClick={handleLogout}>Logout</button>
+                  </div>
                 </span>
               </div>
             </Link>

@@ -12,6 +12,9 @@ import UpdatePassword from "./User/LoginSignup/UpdatePassword";
 import ForgotPassword from "./User/LoginSignup/ForgotPassword";
 import ResetPassword from "./User/LoginSignup/ResetPassword";
 import AddressList from "./Address/AddressList";
+import Order from "./User/Order/Order";
+import Checkout from "./Checkout/Checkout";
+import Dashboard from "./Admin/Dashboard";
 
 export {
     Home,
@@ -28,4 +31,7 @@ export {
     ForgotPassword,
     ResetPassword,
     AddressList,
+    Order,
+    Checkout,
+    Dashboard,
 }

@@ -1,0 +1,54 @@
+.admin__create-product {
+    width: 40vw;
+    background-color: #fff;
+    margin: 2rem;
+    padding: 4rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+
+    flex-direction: column;
+}
+
+.admin__create-product h2 {
+    margin-bottom: 10px;
+}
+
+#createProductFormFile>img {
+    width: 3vmax;
+    border-radius: 100%;
+}
+
+#createProductFormFile>input {
+    margin-left: 10px;
+    display: flex;
+    padding: 0;
+    width: 100%;
+}
+
+#createProductFormFile>input::file-selector-button {
+    cursor: pointer;
+    width: 100%;
+    height: 5vh;
+    z-index: 2;
+    border: 1px solid #EEE;
+    border-radius: 6px;
+    padding: 0 1vmax;
+    font: 400 0.8vmax cursive;
+    transition: all .5s;
+    color: rgba(0, 0, 0, 0.623);
+    background-color: #fff;
+}
+
+#createProductFormFile>input::file-selector-button:hover {
+    background-color: rgb(231, 231, 231);
+}
+
+#createProductFormImage {
+    width: 100%;
+    overflow: auto;
+}
+
+#createProductFormImage>img {
+    width: 6vmax;
+    margin: 0 0.5vmax;
+}

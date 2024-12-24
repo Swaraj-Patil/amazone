@@ -17,14 +17,16 @@ import {
   UpdatePassword,
   ForgotPassword,
   ResetPassword,
-  AddressList
+  AddressList,
+  Order,
+  Checkout,
+  Dashboard
 } from './component'
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom'
 import store from './redux/store'
 import { loadUser } from './redux/actions/userActions';
 import ProtectedRoute from './component/Route/ProtectedRoute';
-import Checkout from './component/Checkout/Checkout';
 
 function App() {
 
@@ -56,7 +58,10 @@ function App() {
           <Route exact path='/me/update' element={<UpdateProfile />} />
           <Route exact path='/password/update' element={<UpdatePassword />} />
 
+          <Route exact path='/admin/dashboard' element={<Dashboard />} />
+
           <Route exact path='/addresses' element={<AddressList />} />
+          <Route exact path='/orders/me' element={<Order />} />
           <Route exact path='/checkout' element={<Checkout />} />
         </Route>
 

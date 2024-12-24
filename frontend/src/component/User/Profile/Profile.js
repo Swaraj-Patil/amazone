@@ -28,7 +28,7 @@ const Profile = () => {
             imgUrl: 'https://m.media-amazon.com/images/G/31/x-locale/cs/ya/images/Box._CB485927553_.png',
             title: 'Your Orders',
             subtitle: 'Track, return, or buy things again',
-            url: '/orders'
+            url: '/orders/me'
         },
         {
             imgUrl: 'https://m.media-amazon.com/images/G/31/x-locale/cs/ya/images/address-map-pin._CB485934183_.png',
@@ -87,7 +87,7 @@ const Profile = () => {
         reader2.readAsDataURL(e.target.files[0])
     }
 
-    const navigateToAdminDashboard = () => navigate('/dashboard')
+    const navigateToAdminDashboard = () => navigate('/admin/dashboard')
 
     useEffect(() => {
         if (!isAuthenticated) {
@@ -215,9 +215,9 @@ const Profile = () => {
                     {
                         user?.role === 'Admin' &&
                         <Tooltip title='Dashboard'>
-                            <div 
-                                className='account__admin' 
-                                onClick={navigateToAdminDashboard} 
+                            <div
+                                className='account__admin'
+                                onClick={navigateToAdminDashboard}
                                 onMouseOver={() => setOpenBackDrop(true)}
                                 onMouseLeave={() => setOpenBackDrop(false)}
                             >

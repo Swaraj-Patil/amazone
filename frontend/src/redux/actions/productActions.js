@@ -5,7 +5,10 @@ import {
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAILURE,
-    CLEAR_ERRORS
+    CREATE_PRODUCT_REQUEST,
+    CREATE_PRODUCT_SUCCESS,
+    CREATE_PRODUCT_FAIL,
+    CLEAR_ERRORS,
 } from '../constants/productConstants'
 import axios from 'axios'
 
@@ -33,6 +36,36 @@ export const getAllProducts = (keyword = '', currentPage = 1, price = [0, 999999
         })
     }
 }
+
+// Create a new product --> Admin
+export const createNewProduct = productDetails => async (dispatch) => {
+    try {
+        dispatch({ type: CREATE_PRODUCT_REQUEST })
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.post(
+            '/api/v1/admin/product/new',
+            productDetails,
+            config,
+        )
+
+        dispatch({
+            type: CREATE_PRODUCT_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: CREATE_PRODUCT_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
 
 // Fetch product details
 export const getProductDetails = id => async (dispatch) => {
