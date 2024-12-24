@@ -8,8 +8,6 @@ const cloudinary = require('cloudinary')
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     let images = []
 
-    console.log('req', req.body.images.length)
-
     if (typeof req.body.images === 'string') {
         images.push(req.body.images)
     } else {
@@ -17,13 +15,11 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     }
 
     const imagesLink = []
-    for (let i = 0; i < images.length; i++) {
+    for (let i = 0; i < images?.length; i++) {
         try {
             const result = await cloudinary.v2.uploader.upload(images[i], {
                 folder: 'products'
             })
-            console.log('result', result)
-
             imagesLink.push({
                 public_id: result.public_id,
                 url: result.secure_url

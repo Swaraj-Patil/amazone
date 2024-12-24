@@ -10,19 +10,19 @@ const ReviewCard = ({ review }) => {
         precision: 0.5,
         size: 'small',
     }
-    
+
     const monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const reviewDate = {
-        year: review.createdAt.substring(0,4),
-        date: review.createdAt.substring(8,10),
-        month: monthNames[parseInt(review.createdAt.substring(5,7))]
+        year: review.createdAt.substring(0, 4),
+        date: review.createdAt.substring(8, 10),
+        month: monthNames[parseInt(review.createdAt.substring(5, 7))]
     }
 
     return (
         <div className='reviewCard'>
             <div>
-                <img src={review.profile.url} alt='User' />
-                <p>{ review.name }</p>
+                <img src={review.profile?.url} alt='User' />
+                <p>{review.name}</p>
             </div>
             <div>
                 <Rating  {...options} />

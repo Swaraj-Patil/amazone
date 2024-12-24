@@ -199,7 +199,7 @@ const ProductDetails = () => {
                     key={image._id}
                     onMouseOver={e => handlePagination(e)}
                   >
-                    <img src={image.url} alt="preview" style={{ pointerEvents: 'none' }} />
+                    <img src={image?.url} alt="preview" style={{ pointerEvents: 'none' }} />
                   </button>
                 ))}
               </div>
@@ -208,7 +208,7 @@ const ProductDetails = () => {
 
               <div className="productDetails__carousel-right">
                 {product.images && (
-                  <img src={product.images[0].url} alt='Product' ref={carouselImage} />
+                  <img src={product.images?.[0].url} alt='Product' ref={carouselImage} />
                 )}
               </div>
 
@@ -313,7 +313,7 @@ const ProductDetails = () => {
                     <select name="quantity" value={quantity} onChange={e => setQuantity(parseInt(e.target.value))}>
                       {
                         product.stock < 11
-                          ? [...Array(product?.stock)].map((_, index) => <option key={index} value={index+1}>{index+1}</option>)
+                          ? [...Array(product?.stock)].map((_, index) => <option key={index} value={index + 1}>{index + 1}</option>)
                           : quantities.map(item => <option key={item} value={item}>{item}</option>)
                       }
                     </select>
