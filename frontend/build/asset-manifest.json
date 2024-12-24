@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.85f59b84.css",
-    "main.js": "/static/js/main.86bf3027.js",
+    "main.css": "/static/css/main.4ca7130e.css",
+    "main.js": "/static/js/main.3d30fbe5.js",
     "static/media/applewatch.png": "/static/media/applewatch.e18e646c24fea81e08c2.png",
     "static/media/Amazon Ember.ttf": "/static/media/Amazon Ember.4c5f8783fc6015d993cd.ttf",
     "static/media/Amazon Ember Bold.ttf": "/static/media/Amazon Ember Bold.aaade75020189dfc336e.ttf",
@@ -13,7 +13,11 @@
     "static/media/Amazon Ember Display Italic.ttf": "/static/media/Amazon Ember Display Italic.ddfd3c4ef1fdef2817ac.ttf",
     "static/media/Amazon Ember Italic.ttf": "/static/media/Amazon Ember Italic.46f88e1b06c7152be90e.ttf",
     "static/media/Amazon Ember Mono.ttf": "/static/media/Amazon Ember Mono.912fdae50fec0fdcec05.ttf",
+    "static/media/rupay.png": "/static/media/rupay.c10a5df9c4ca7ec9043b.png",
     "static/media/banner3.jpg": "/static/media/banner3.0b62e2b92e218b3bf4de.jpg",
+    "static/media/american-express.png": "/static/media/american-express.66c6a4eb78a5c609fb45.png",
+    "static/media/bajaj-finserv.png": "/static/media/bajaj-finserv.f5e2d156908dcb530ec7.png",
+    "static/media/mastercard.png": "/static/media/mastercard.a80abe89505558c780e8.png",
     "static/media/logo-dark-2.png": "/static/media/logo-dark-2.ce338eeeea0df56e34c3.png",
     "static/media/logo-dark.png": "/static/media/logo-dark.8c8716e81f0dec58acc4.png",
     "static/media/logo-light.png": "/static/media/logo-light.2bef34c3c4c1e3567211.png",
@@ -21,11 +25,11 @@
     "static/media/prime-icon.svg": "/static/media/prime-icon.3c0154ff1390ab3934f1429064f24d87.svg",
     "static/media/india-flag.svg": "/static/media/india-flag.f1392c76f9306f034770.svg",
     "index.html": "/index.html",
-    "main.85f59b84.css.map": "/static/css/main.85f59b84.css.map",
-    "main.86bf3027.js.map": "/static/js/main.86bf3027.js.map"
+    "main.4ca7130e.css.map": "/static/css/main.4ca7130e.css.map",
+    "main.3d30fbe5.js.map": "/static/js/main.3d30fbe5.js.map"
   },
   "entrypoints": [
-    "static/css/main.85f59b84.css",
-    "static/js/main.86bf3027.js"
+    "static/css/main.4ca7130e.css",
+    "static/js/main.3d30fbe5.js"
   ]
 }
