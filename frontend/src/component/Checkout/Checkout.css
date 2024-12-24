@@ -45,7 +45,8 @@
     line-height: 24px;
 }
 
-.checkout__address {
+.checkout__address,
+.checkout__summary {
     border: 1px solid #D5D9D9;
     border-radius: 8px;
     padding: 1rem;

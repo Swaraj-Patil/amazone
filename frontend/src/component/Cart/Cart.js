@@ -15,16 +15,16 @@ import { Link, useNavigate } from 'react-router-dom'
 const Cart = () => {
 
   const navigate = useNavigate()
-  // const dispatch = useDispatch()
+  const { cartItems } = useSelector(state => state.cart)
 
   const [subtotal, setSubtotal] = useState(0)
-
-  const { cartItems } = useSelector(state => state.cart)
+  const [cartItemCount, setCartItemCount] = useState(0)
 
   const handleCartCheckout = () => navigate('/login?redirect=checkout')
 
   useEffect(() => {
-    setSubtotal(cartItems.reduce((acc, cartItem) => acc + (cartItem.price * cartItem.quantity), 0))
+    setSubtotal(cartItems?.reduce((acc, cartItem) => acc + (cartItem.price * cartItem.quantity), 0))
+    setCartItemCount(cartItems?.reduce((acc, cartItem) => acc + cartItem.quantity, 0))
   }, [cartItems])
 
   return (
@@ -41,19 +41,16 @@ const Cart = () => {
 
                   <div className='line-break'></div>
 
-
                   <div>
-                    {
-                      cartItems && cartItems.map(cartItem => <CartItem key={cartItem?.product} data={cartItem} />)
-                    }
+                    {cartItems && cartItems.map(cartItem => <CartItem key={cartItem?.product} data={cartItem} />)}
                   </div>
 
-                  <h3>Subtotal (2 items): <strong><small>₹</small> {subtotal.toLocaleString('en-IN')}</strong></h3>
+                  <h3>Subtotal ({cartItemCount} items): <strong><small>₹</small> {subtotal.toLocaleString()}</strong></h3>
                 </div>
 
                 <p className='app_note'>
-                The price and availability of items at Amazon.in are subject to change. The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price. Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay.
-              </p>
+                  The price and availability of items at Amazon.in are subject to change. The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price. Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay.
+                </p>
               </div>
             </>
             :
@@ -79,11 +76,11 @@ const Cart = () => {
 
         <div className='cart__right'>
           <div>
-            <h3>Subtotal (2 items): <strong><small>₹</small> 1,999.00</strong></h3>
+            <h3>Subtotal ({cartItemCount} items): <strong><small>₹</small> {subtotal.toLocaleString()}</strong></h3>
 
             <div className='cart__gift'>
-              <input type='checkbox' />
-              <span>This order conatins a gift</span>
+              <input type='checkbox' id='gift' name='gift' />
+              <label htmlFor='gift' style={{ fontSize: '14px', marginLeft: '10px' }}>This order conatins a gift</label>
             </div>
 
             <button className='button-new' onClick={handleCartCheckout}>Proceed to Buy</button>

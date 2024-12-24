@@ -20,6 +20,9 @@ import americanExpress from '../../assets/american-express.png'
 import rupay from '../../assets/rupay.png'
 import { upiRegex } from '../../utils/constants'
 import { fulfilled, primeIcon } from '../../assets'
+import { setAccordion } from '../../redux/actions/paymentActions'
+import { generatePercent, getDate } from '../../utils'
+import { saveShippingInfo } from '../../redux/actions/cartActions'
 
 const months = [
     {
@@ -271,6 +274,8 @@ const CheckoutAddress = () => {
     const { states } = useSelector(state => state.states)
     const { loading: createAddLoader, error: createAddError, success } = useSelector(state => state.createAddress)
     const { isDeleted } = useSelector(state => state.address)
+    const { accordionExpanded } = useSelector(state => state.payment)
+    const { cartItems } = useSelector(state => state.cart)
 
     const [addressModal, setAddressModal] = useState(false)
     const [cardModal, setCardModal] = useState(false)
@@ -278,13 +283,15 @@ const CheckoutAddress = () => {
     const [cardForm, setCardForm] = useState(initialCard)
     const [instructions, setInstructions] = useState(false)
     const [formValid, setFormValid] = useState(false)
-    const [accordionExpanded, setAccordionExpanded] = useState(false)
+    // const [accordionExpanded, setAccordionExpanded] = useState(false)
     const [selectedAddress, setSelectedAddress] = useState('')
     const [selectedPayment, setSelectedPayment] = useState(0)
     const [selectedBank, setSelectedBank] = useState({ id: null, name: '' })
     const [upi, setUpi] = useState('')
     const [paymentValid, setPaymentValid] = useState(false)
     const [isUpiVerified, setIsUpiVerified] = useState(false)
+
+    const { date: tDate, shortMonth: tMonth, year: tYear } = getDate()
 
     const AddressCard = ({ address }) => (
         <li>
@@ -396,11 +403,22 @@ const CheckoutAddress = () => {
     }
 
     const handleAccordionChange = (panel) => (event, isExpanded) => {
-        setAccordionExpanded(isExpanded ? panel : false)
+        // setAccordionExpanded(isExpanded ? panel : false)
+        dispatch(setAccordion(isExpanded ? panel : false))
     }
 
     const handleAddressSelection = () => {
-        setAccordionExpanded(('payment'))
+        const _address = addresses.find(add => add._id === selectedAddress)
+        console.log({ _address })
+        dispatch(saveShippingInfo({
+            address: `${_address.addressLine}, ${_address.area}, ${_address.landmark}`,
+            city: _address.city,
+            state: _address.state,
+            country: _address.country,
+            pinCode: _address.pincode,
+            contactNo: _address.mobile
+        }))
+        dispatch(setAccordion('payment'))
     }
 
     const handleAddressEdit = address => { }
@@ -516,6 +534,10 @@ const CheckoutAddress = () => {
     useEffect(() => {
         cardModal && setCardForm(initialCard)
     }, [cardModal])
+
+    useEffect(() => {
+        dispatch(setAccordion(accordionExpanded))
+    }, [accordionExpanded, dispatch])
 
     return (
         <>
@@ -744,6 +766,7 @@ const CheckoutAddress = () => {
                                 <Button
                                     label='Use this payment method'
                                     disabled={!paymentValid}
+                                    onClick={() => dispatch(setAccordion('review'))}
                                 />
                             </div>
                         </AccordionDetails>
@@ -756,38 +779,42 @@ const CheckoutAddress = () => {
                             aria-controls="panel3-content"
                             id="panel3-header"
                         >
-                            <h4 style={{ fontSize: '18px', fontWeight: 700 }}>Arriving 25 Dec 2024</h4>
+                            <h4 style={{ fontSize: '18px', fontWeight: 700 }}>Review your ordes</h4>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <div>
-                                <p style={{ fontSize: '14px' }}>If you order in the next 15 minutes <a href='https://www.amazon.in/gp/help/customer/display.html?nodeId=GRK3YG3G4Y3R4LWJ' target='_blank' rel="noopener noreferrer" className='app__link'>Details</a></p>
+                            {cartItems?.map(cartItem => (
+                                <div>
+                                    <h4 style={{ fontSize: '16px', fontWeight: 500 }}>{`Arriving ${tDate} ${tMonth} ${tYear}`}</h4>
+                                    <p style={{ fontSize: '14px', marginBottom: '10px' }}>If you order in the next 15 minutes <a href='https://www.amazon.in/gp/help/customer/display.html?nodeId=GRK3YG3G4Y3R4LWJ' target='_blank' rel="noopener noreferrer" className='app__link'>Details</a></p>
 
-                                <div style={{
-                                    backgroundColor: '#F7F7F7',
-                                    border: '.1rem solid #F7F7F7',
-                                    borderRadius: '8px',
-                                    fontSize: '14px',
-                                    padding: '18px',
-                                    display: 'flex',
-                                    columnGap: '10px'
-                                }}>
-                                    <div style={{}}>
-                                        <img width={150} src="https://m.media-amazon.com/images/I/61vihvwHdBL._AC_AA150_.jpg" alt="product" />
-                                    </div>
-
-                                    <div>
-                                        <p>One94Store 3D Deer Crystal Globe Lamp Creative Engraved Crystal Ball Night Light USB Table LED Wooden Crystal Ball for Home Office Decoration Birthday Gift Adults (Deer 6cm)(Warm White)</p>
-                                        <div style={{ fontSize: '12px', display: 'flex', alignItems: 'center', columnGap: '6px', margin: '6px 0' }}>
-                                            <p style={{ backgroundColor: '#CC0C39', padding: '4px 6px', borderRadius: '2px', color: 'white' }}>60% off</p>
-                                            <p style={{ color: '#CC0C39', fontWeight: 700 }}>Limited time deal</p>
+                                    <div style={{
+                                        backgroundColor: '#F7F7F7',
+                                        border: '.1rem solid #F7F7F7',
+                                        borderRadius: '8px',
+                                        fontSize: '14px',
+                                        padding: '18px',
+                                        display: 'flex',
+                                        columnGap: '10px'
+                                    }}>
+                                        <div style={{}}>
+                                            <img width={150} src={cartItem.image || 'https://m.media-amazon.com/images/I/61vihvwHdBL._AC_AA150_.jpg'} alt="product" />
                                         </div>
-                                        <p style={{ fontWeight: 700 }}>₹299.00</p>
-                                        <img src={primeIcon} alt="prime" width={50} />
-                                        <p style={{ fontSize: '12px', display: 'flex', alignItems: 'center', columnGap: '10px' }}>Ships from Amazon <span><img src={fulfilled} alt="fulfilled" /></span></p>
-                                        <p style={{ fontSize: '12px' }}>Sold by <a href="https://www.amazon.in/sp?marketplaceID=A21TJRUUN4KGV&seller=A1V7ZM32AEQ8C" target='_blank' rel="noopener noreferrer" className='app__link'>X4Cart</a></p>
+
+                                        <div>
+                                            <p>{cartItem.name}</p>
+                                            <div style={{ fontSize: '12px', display: 'flex', alignItems: 'center', columnGap: '6px', margin: '6px 0' }}>
+                                                <p style={{ backgroundColor: '#CC0C39', padding: '4px 6px', borderRadius: '2px', color: 'white' }}>{generatePercent(0)}% off</p>
+                                                <p style={{ color: '#CC0C39', fontWeight: 700 }}>Limited time deal</p>
+                                            </div>
+                                            <p style={{ fontWeight: 700 }}>₹{cartItem.price.toLocaleString()}</p>
+                                            <img src={primeIcon} alt="prime" width={50} />
+                                            <p style={{ fontSize: '12px', display: 'flex', alignItems: 'center', columnGap: '10px' }}>Ships from Amazon <span><img src={fulfilled} alt="fulfilled" /></span></p>
+                                            <p style={{ fontSize: '12px' }}>Sold by <a href="https://www.amazon.in/sp?marketplaceID=A21TJRUUN4KGV&seller=A1V7ZM32AEQ8C" target='_blank' rel="noopener noreferrer" className='app__link'>X4Cart</a></p>
+                                            <p style={{ fontWeight: 600 }}>Quantity: {cartItem.quantity}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            ))}
                         </AccordionDetails>
                     </Accordion>
                 </div >
@@ -849,7 +876,7 @@ const CheckoutAddress = () => {
                                         type: 'number'
                                     }}
                                     value={addressForm.mobile}
-                                    onChange={(newValue, field) => handleAddressFormChange(newValue, field)}
+                                    onChange={(newValue, field) => newValue.length < 11 && handleAddressFormChange(newValue, field)}
                                 />
                                 <p style={{ fontSize: '12px', lineHeight: '16px', margin: '6px 0 0 10px' }}>May be used to assist delivery</p>
                             </div>

@@ -1,5 +1,8 @@
+import { SET_ACCORDION } from "../constants/paymentConstants"
+
 const initialState = {
-    cvv: ''
+    cvv: '',
+    accordionExpanded: 'address'
 }
 
 const paymentReducer = (state = initialState, action) => {
@@ -8,6 +11,12 @@ const paymentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cvv: action.payload
+            }
+
+        case SET_ACCORDION:
+            return {
+                ...state,
+                accordionExpanded: action.payload
             }
 
         default:
