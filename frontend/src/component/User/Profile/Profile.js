@@ -137,7 +137,7 @@ const Profile = () => {
                     <div className='account'>
                         <div>
                             <div className='account__cover'>
-                                {user.cover && <img src={user.cover.url} alt='Cover' />}
+                                {user.cover && <img src={user.cover?.url} alt='Cover' />}
                                 <label htmlFor='cover'>
                                     <CameraAltOutlined />
                                 </label>
@@ -154,7 +154,7 @@ const Profile = () => {
                                     <label htmlFor='avatar'>
                                         <CameraAltOutlined />
                                     </label>
-                                    {user.avatar && <img src={user.avatar.url} alt='Profile' />}
+                                    {user.avatar && <img src={user.avatar?.url} alt='Profile' />}
                                     <input
                                         name='avatar'
                                         id='avatar'

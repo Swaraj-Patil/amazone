@@ -6,7 +6,7 @@ const AccountCard = ({ data }) => {
   const navigate = useNavigate()
 
   return (
-    <div className='account__card' onClick={() => navigate(data.url)}>
+    <div className='account__card' onClick={() => navigate(data?.url)}>
       <div><img src={data.imgUrl} alt='Icon' /></div>
       <div>
         <h4>{data.title}</h4>

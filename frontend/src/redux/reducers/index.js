@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { productDetailsReducer, productsReducer } from "./productReducers";
+import { createProductReducer, productDetailsReducer, productsReducer } from "./productReducers";
 import { forgotPasswordReducer, profileReducer, userReducer } from "./userReducer";
 import { cartReducer } from "./cartReducer";
 // import { toastsReducer as toasts } from 'react-toastify-redux'
@@ -14,6 +14,7 @@ register()
 const rootReducer = combineReducers({
     products: productsReducer,
     productDetails: productDetailsReducer,
+    createProduct: createProductReducer,
     user: userReducer,
     profile: profileReducer,
     forgotPassword: forgotPasswordReducer,
