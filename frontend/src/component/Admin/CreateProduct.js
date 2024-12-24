@@ -74,7 +74,7 @@ const CreateProduct = () => {
         dispatch(createNewProduct(myForm))
     }
 
-    const formValid = () => name?.length > 2 && description?.length > 2 && brand?.length > 2 && price !== 0 && category && images.length > 0
+    const formValid = name?.length > 2 && description?.length > 2 && brand?.length > 2 && price !== 0 && category && images.length > 0
 
     useEffect(() => {
         if (user.role !== 'Admin') {
