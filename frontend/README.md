@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Amazone: Amazon Clone - MERN E-Commerce Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Visit: [Live Site](https://amazonee.vercel.app/)
 
-## Available Scripts
+Hi! My name is **Swaraj**, and I have created this **Amazon Clone** website to learn the MERN Stack (MongoDB, Express, React, Node.js). It's a fake e-commerce site built for educational purposes.
 
-In the project directory, you can run:
+## **For placing an order, please use the following credit card details:**
 
-### `npm start`
+- **Card Number**: `4242 4242 4242 4242`
+- **Expiry Date**: _Any future date, For example: `12/25`_
+- **CVV**: _Random three digits, For example: `123`_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> **Note**: If you're using a mobile browser and the payment gateway throws an error, please switch to desktop mode for the payment part and switch back to mobile mode once the payment is done.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Wesbite Landing Page](https://res.cloudinary.com/dpwr2flc5/image/upload/v1735153765/amazone_home_o0algs.png)
 
-### `npm test`
+## **Implementation**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In this project, I have implemented advance knowledge of **Node.js**, **React**, **Express**, and **MongoDB**. I will be making a tutorial for the MERN Stack Amazon Clone. So stay tuned for updates!
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Installation**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Backend**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To install dependencies for the backend, run the following command:
 
-### `npm run eject`
+```bash
+npm i
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **Frontend**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To install dependencies for the frontend, navigate to the frontend directory and run the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+cd frontend
+npm i
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Environment Variables
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+In order to use the app, you need to create a .env file in the backend/config directory and add the appropriate variables:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Essential Variables**  
+PORT=  
+DB\*URI =  
+STRIPE_API_KEY=  
+STRIPE_SECRET_KEY=  
+JWT_SECRET=  
+JWT_EXPIRE=  
+COOKIE_EXPIRE=  
+SMPT_SERVICE =  
+SMPT_MAIL=  
+SMPT_PASSWORD=  
+SMPT_HOST=  
+SMPT_PORT=  
+CLOUDINARY_NAME  
+CLOUDINARY_API_KEY  
+CLOUDINARY_API_SECRET
 
-### Code Splitting
+> \_fill each field with your info respectively\*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Me
 
-### Analyzing the Bundle Size
+**LinkedIn** Click [Here](https://in.linkedin.com/in/swaraj1703) **@swaraj1703**  
+**GitHub** Click [Here](https://github.com/Swaraj-Patil) **@Swaraj-Patil**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for checking out this project! Feel free to leave feedback or ask any questions.
