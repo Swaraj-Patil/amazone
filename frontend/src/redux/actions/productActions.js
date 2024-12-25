@@ -12,6 +12,9 @@ import {
     CREATE_REVIEW_SUCCESS,
     CREATE_REVIEW_FAILURE,
     CLEAR_ERRORS,
+    DELETE_REVIEW_REQUEST,
+    DELETE_REVIEW_SUCCESS,
+    DELETE_REVIEW_FAILURE,
 } from '../constants/productConstants'
 import axios from 'axios'
 
@@ -112,6 +115,25 @@ export const createReview = reviewData => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: CREATE_REVIEW_FAILURE,
+            payload: error.response.data.message
+        })
+    }
+}
+
+// Delete your review
+export const deleteReviews = (reviewId, productId) => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_REVIEW_REQUEST })
+
+        const { data } = await axios.delete(`/api/v1/reviews?productId=${productId}&id=${reviewId}`)
+
+        dispatch({
+            type: DELETE_REVIEW_SUCCESS,
+            payload: data.success
+        })
+    } catch (error) {
+        dispatch({
+            type: DELETE_REVIEW_FAILURE,
             payload: error.response.data.message
         })
     }

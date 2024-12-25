@@ -32,7 +32,7 @@ const productSchema = new mongoose.Schema({
         },
     ],
     category: {
-        type: 'String',        
+        type: 'String',
         required: [true, 'Please select a category for this product.'],
     },
     stock: {
@@ -77,6 +77,10 @@ const productSchema = new mongoose.Schema({
                     type: String,
                     required: true
                 }
+            },
+            verified: {
+                type: Boolean,
+                required: false,
             },
             createdAt: {
                 type: Date,

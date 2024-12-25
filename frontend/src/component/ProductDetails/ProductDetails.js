@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import LineBreak from '../../utils/LineBreak'
 import { Button, Input, TextArea } from '../../utils'
+import { myOrders } from '../../redux/actions/orderActions'
 
 const modalStyles = {
   position: 'absolute',
@@ -156,8 +157,12 @@ const ProductDetails = () => {
 
   const dispatch = useDispatch()
   const { id } = useParams()
-  let { error: productError, product, loading } = useSelector(state => state.productDetails)
   const { user } = useSelector(state => state.user)
+  let { error: productError, product, loading } = useSelector(state => state.productDetails)
+  const { orders } = useSelector(state => state.myOrders)
+  const verifiedPurchase = orders?.some(order =>
+    order.orderItems?.some(item => item.product === id)
+  )
 
   const [quantity, setQuantity] = useState(1)
   const [reviewModal, setReviewModal] = useState(false)
@@ -226,6 +231,7 @@ const ProductDetails = () => {
     myForm.set('rating', reviewForm.rating)
     myForm.set('profileID', user.avatar.public_id)
     myForm.set('profileURL', user.avatar.url)
+    myForm.set('verified', verifiedPurchase)
 
     await dispatch(createReview(myForm))
     setReviewModal(false)
@@ -239,6 +245,7 @@ const ProductDetails = () => {
     }
 
     dispatch(getProductDetails(id))
+    dispatch(myOrders())
 
     shuffle(ads)
 
@@ -452,7 +459,13 @@ const ProductDetails = () => {
 
               {
                 product.reviews?.length > 0
-                  ? product.reviews.map(review => <ReviewCard key={review._id} review={review} />)
+                  ? product.reviews.map(review =>
+                    <ReviewCard
+                      key={review._id}
+                      review={review}
+                      productId={product._id}
+                      userId={user?._id}
+                    />)
                   : <strong>No customer reviews</strong>
               }
 
@@ -469,8 +482,8 @@ const ProductDetails = () => {
               <div className='add__review'>
                 <div className='app__between'>
                   <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', fontSize: '13px' }}>
-                    <img style={{ borderRadius: '100%', border: '2px solid white' }} width={40} src={user.avatar.url} alt='user' />
-                    <p>{user.name}</p>
+                    <img style={{ borderRadius: '100%', border: '2px solid white' }} width={40} src={user?.avatar?.url} alt='user' />
+                    <p>{user?.name}</p>
                     <a href="" className='app__link'>Edit public name</a>
                   </div>
                   <Close style={{ cursor: 'pointer' }} onClick={() => setReviewModal(false)} />

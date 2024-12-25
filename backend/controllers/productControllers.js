@@ -124,7 +124,7 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Create a new Review or Update existing review
 exports.createReview = catchAsyncErrors(async (req, res, next) => {
-    const { rating, title, comment, productId, profileID, profileURL } = req.body
+    const { rating, title, comment, productId, profileID, profileURL, verified } = req.body
     const profile = {
         public_id: profileID,
         url: profileURL
@@ -136,7 +136,8 @@ exports.createReview = catchAsyncErrors(async (req, res, next) => {
         rating: Number(rating),
         title,
         comment,
-        profile
+        profile,
+        verified,
     }
 
     const product = await Products.findById(productId)
@@ -150,6 +151,7 @@ exports.createReview = catchAsyncErrors(async (req, res, next) => {
                     review.title = title,
                     review.comment = comment,
                     review.profile = profile
+                review.verified = verified
             }
         })
     } else {
@@ -204,7 +206,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     if (reviews.length === 0) {
         ratings = 0
     } else {
-        ratings = totalRatings / reviews.length
+        ratings = totalRating / reviews.length
     }
     const numOfReviews = reviews.length
 
