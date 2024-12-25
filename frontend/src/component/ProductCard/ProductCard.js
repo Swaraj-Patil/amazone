@@ -8,24 +8,20 @@ import {
 } from '../../assets'
 import applewatch from '../../assets/temp/applewatch.png'
 import { Link } from 'react-router-dom'
+import { getDate } from '../../utils'
 
 const ProductCard = ({ product }) => {
+
+    const date = new Date()
+    const sameDayDelivery = date.getHours() < 14
+    const delivery = getDate(sameDayDelivery ? 0 : 1)
+    const formattedDelivery = `${delivery.date} ${delivery.month}`
 
     const options = {
         value: product.ratings,
         readOnly: true,
         precision: 0.5,
         emptyIcon: <StarBorder style={{ color: '#CD9042' }} />
-    }
-
-    // Get tomorrow's date
-    function tomorrow() {
-
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-        let currentDate = new Date()
-        currentDate.setDate(currentDate.getDate() + 1)
-
-        return `${currentDate.getDate()} ${monthNames[currentDate.getMonth()]}`
     }
 
     return (
@@ -44,7 +40,10 @@ const ProductCard = ({ product }) => {
                     <span><small>₹</small>{product && product.price.toLocaleString('en-IN')}</span>
                 </div>
                 <p style={{ color: '#555' }}>Up to 5% back with Amazone Pay ICICI card</p>
-                <p><img src={primeIcon} alt='prime' />FREE Delivery by &nbsp; <strong>Tomorrow, {tomorrow()}</strong></p>
+                <p>
+                    <img src={primeIcon} alt='prime' />
+                    <p>FREE delivery by <strong>{`${sameDayDelivery ? 'Today,' : 'Tomorrow,'} ${formattedDelivery}`}</strong></p>
+                </p>
             </div>
         </Link>
     )

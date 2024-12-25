@@ -7,7 +7,10 @@ import {
     PRODUCT_DETAILS_FAILURE,
     CREATE_PRODUCT_REQUEST,
     CREATE_PRODUCT_SUCCESS,
-    CREATE_PRODUCT_FAIL,
+    CREATE_PRODUCT_FAILURE,
+    CREATE_REVIEW_REQUEST,
+    CREATE_REVIEW_SUCCESS,
+    CREATE_REVIEW_FAILURE,
     CLEAR_ERRORS,
 } from '../constants/productConstants'
 import axios from 'axios'
@@ -60,12 +63,11 @@ export const createNewProduct = productDetails => async (dispatch) => {
         })
     } catch (error) {
         dispatch({
-            type: CREATE_PRODUCT_FAIL,
+            type: CREATE_PRODUCT_FAILURE,
             payload: error.response.data.message
         })
     }
 }
-
 
 // Fetch product details
 export const getProductDetails = id => async (dispatch) => {
@@ -81,6 +83,35 @@ export const getProductDetails = id => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_DETAILS_FAILURE,
+            payload: error.response.data.message
+        })
+    }
+}
+
+// Create new review
+export const createReview = reviewData => async (dispatch) => {
+    try {
+        dispatch({ type: CREATE_REVIEW_REQUEST })
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.put(
+            '/api/v1/review',
+            reviewData,
+            config
+        )
+
+        dispatch({
+            type: CREATE_REVIEW_SUCCESS,
+            payload: data.success
+        })
+    } catch (error) {
+        dispatch({
+            type: CREATE_REVIEW_FAILURE,
             payload: error.response.data.message
         })
     }

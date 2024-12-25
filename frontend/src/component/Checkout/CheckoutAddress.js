@@ -137,7 +137,7 @@ const modalStyles = {
     height: '90vh',
     display: 'flex',
     flexDirection: 'column'
-};
+}
 
 const initialState = {
     id: null,

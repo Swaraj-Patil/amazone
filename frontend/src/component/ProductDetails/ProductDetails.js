@@ -1,17 +1,34 @@
 import React, { useRef, useEffect, useState } from 'react'
 import './ProductDetails.css'
-import { Rating } from '@mui/material'
-import { LocalOffer, ArrowForwardIos, ArrowBackIos, Lock, KeyboardArrowDown, StarBorder } from '@mui/icons-material'
+import { Box, Modal, Rating } from '@mui/material'
+import { LocalOffer, ArrowForwardIos, ArrowBackIos, Lock, KeyboardArrowDown, StarBorder, Close } from '@mui/icons-material'
 import { primeIcon, pd1, pd2, pd3, pd4, pd5, pd6 } from '../../assets'
 import { Loader, MetaData } from '../../component/Layout'
 import AddCard from './AddCard'
 import ReviewCard from './ReviewCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProductDetails, clearErrors } from '../../redux/actions/productActions'
+import { getProductDetails, clearErrors, createReview } from '../../redux/actions/productActions'
 import { addItemsToCart } from '../../redux/actions/cartActions'
 import { useParams } from 'react-router-dom'
-// import { error as ToastError, success as ToastSuccess } from 'react-toastify-redux'
 import { toast } from 'react-toastify'
+import LineBreak from '../../utils/LineBreak'
+import { Button, Input, TextArea } from '../../utils'
+
+const modalStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: 'white',
+  boxShadow: 24,
+  p: 0,
+  width: '700px',
+  borderRadius: '10px',
+  outline: 'none',
+  overflow: 'hidden',
+  display: 'flex',
+  flexDirection: 'column'
+}
 
 const offers = [
   {
@@ -102,6 +119,12 @@ const ads = [
 
 const quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+const initialReviewValues = {
+  title: '',
+  comment: '',
+  rating: 0,
+}
+
 const OffersCard = ({ title, description }) => (
   <div className='productDetails__info-offersCard'>
     <p>{title}</p>
@@ -131,21 +154,24 @@ function shuffle(array) {
 
 const ProductDetails = () => {
 
-  const { id } = useParams()
   const dispatch = useDispatch()
-
+  const { id } = useParams()
   let { error: productError, product, loading } = useSelector(state => state.productDetails)
+  const { user } = useSelector(state => state.user)
 
   const [quantity, setQuantity] = useState(1)
+  const [reviewModal, setReviewModal] = useState(false)
+  const [reviewForm, setReviewForm] = useState(initialReviewValues)
 
   var date = new Date()
   let amazonsChoice = true
+  const discount = 11
+
   const offersContainer = useRef(null)
   const featuresContainer = useRef(null)
   const ratingsRotate = useRef(null)
   const ratingsHide = useRef(null)
   const carouselImage = useRef(null)
-
 
   const options = {
     value: product.ratings,
@@ -170,11 +196,44 @@ const ProductDetails = () => {
     toast.success('Added to cart')
   }
 
-  const discount = 11
+  const reviewFormValid = reviewForm.title && reviewForm.rating
+
+  const handleReviewFormChange = (field, value) => {
+    setReviewForm(prevState => ({
+      ...prevState,
+      [field]: value
+    }))
+  }
+
+  const handleProductReview = () => {
+    const existingReview = product.reviews?.find(review => review.user === user._id)
+    if (existingReview) {
+      setReviewForm({
+        title: existingReview.title,
+        comment: existingReview.comment,
+        rating: existingReview.rating,
+      })
+    }
+    setReviewModal(true)
+  }
+
+  const handleReviewSubmit = async () => {
+    const myForm = new FormData()
+
+    myForm.set('productId', id)
+    myForm.set('title', reviewForm.title)
+    myForm.set('comment', reviewForm.comment)
+    myForm.set('rating', reviewForm.rating)
+    myForm.set('profileID', user.avatar.public_id)
+    myForm.set('profileURL', user.avatar.url)
+
+    await dispatch(createReview(myForm))
+    setReviewModal(false)
+    dispatch(getProductDetails(id))
+  }
 
   useEffect(() => {
     if (productError) {
-      // dispatch(ToastError(productError))
       toast.error(productError)
       dispatch(clearErrors())
     }
@@ -184,6 +243,10 @@ const ProductDetails = () => {
     shuffle(ads)
 
   }, [dispatch, productError, id])
+
+  useEffect(() => {
+    !reviewModal && setReviewForm(initialReviewValues)
+  }, [reviewModal])
 
   return (
     <>
@@ -300,7 +363,7 @@ const ProductDetails = () => {
 
                   <div className='productDetails__info-prime'><img src={primeIcon} alt="Prime" />Same-Day</div>
 
-                  <p style={{ marginBottom: '1rem' }}>FREE delivery <strong>{date.getHours() < 20 ? 'Today' : 'Tomorrow'} by 10 PM.</strong> Order within <span className='green-color'>{24 - date.getHours()} hrs 48 mins.</span></p>
+                  <p style={{ marginBottom: '1rem' }}>FREE delivery <strong>{date.getHours() < 14 ? 'Today' : 'Tomorrow'} by 10 PM.</strong> Order within <span className='green-color'>{14 - date.getHours()} hrs 12 mins.</span></p>
 
                   <p className={product.stock < 1 ? 'red-color' : 'green-color'} style={{ fontSize: 18 }}>
                     {product.stock < 1 ? 'Currently unavailable' : 'In Stock'}
@@ -378,7 +441,7 @@ const ProductDetails = () => {
               <div>
                 <h3>Review this product</h3>
                 <p>Share your thoughts with other customers</p>
-                <button className="button-secondary">Write a product review</button>
+                <button className="button-secondary" onClick={handleProductReview}>Write a product review</button>
                 <div className='line-break'></div>
               </div>
 
@@ -387,15 +450,97 @@ const ProductDetails = () => {
             <div className='productReviews__right'>
               {product.reviews && product.reviews[0] ? <h4>Top reviews from India</h4> : null}
 
-
               {
-                product.reviews && product.reviews[0]
+                product.reviews?.length > 0
                   ? product.reviews.map(review => <ReviewCard key={review._id} review={review} />)
                   : <strong>No customer reviews</strong>
               }
 
             </div>
           </div>
+
+          <Modal
+            open={reviewModal}
+            onClose={() => setReviewModal(false)}
+            aria-labelledby="review-modal-title"
+            aria-describedby="review-modal-description"
+          >
+            <Box sx={modalStyles}>
+              <div className='add__review'>
+                <div className='app__between'>
+                  <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', fontSize: '13px' }}>
+                    <img style={{ borderRadius: '100%', border: '2px solid white' }} width={40} src={user.avatar.url} alt='user' />
+                    <p>{user.name}</p>
+                    <a href="" className='app__link'>Edit public name</a>
+                  </div>
+                  <Close style={{ cursor: 'pointer' }} onClick={() => setReviewModal(false)} />
+                </div>
+
+                <div>
+                  <p style={{ fontWeight: 700, fontSize: '24px', marginBottom: '20px' }}>Create Review</p>
+
+                  <div style={{ display: 'flex', columnGap: '20px' }}>
+                    <img width={60} src={product.images?.[0].url} alt="product" />
+                    <p style={{ fontSize: '14px' }}>{product.name}</p>
+                  </div>
+
+                  <LineBreak marginTop={20} marginBottom={20} />
+
+                  <div>
+                    <p style={{ fontWeight: 700, fontSize: '18px' }}>Overall rating</p>
+                    <Rating
+                      name="add-review-rating"
+                      value={reviewForm.rating}
+                      onChange={(_, newValue) => handleReviewFormChange('rating', newValue)}
+                    />
+                  </div>
+
+                  <LineBreak marginTop={20} marginBottom={20} />
+
+                  <div>
+                    <p style={{ fontWeight: 700, fontSize: '18px', marginBottom: '5px' }}>Add a headline</p>
+                    <Input
+                      inputProps={{
+                        id: 'title',
+                        name: 'title',
+                        placeholder: "What's most important to know?"
+                      }}
+                      value={reviewForm.title}
+                      onChange={(newValue, field) => handleReviewFormChange(field, newValue)}
+                    />
+                  </div>
+
+                  <LineBreak marginTop={20} marginBottom={20} />
+
+                  <div>
+                    <p style={{ fontWeight: 700, fontSize: '18px', marginBottom: '5px' }}>Add a written review</p>
+                    <TextArea
+                      inputProps={{
+                        id: 'comment',
+                        name: 'comment',
+                        placeholder: 'What did you like or dislike? What did you use this product for?'
+                      }}
+                      value={reviewForm.comment}
+                      onChange={(newValue, field) => handleReviewFormChange(field, newValue)}
+                    />
+                  </div>
+
+                  <LineBreak marginTop={20} marginBottom={4} />
+
+                  <p style={{ color: '#565959', fontSize: '12px' }}>We will notify you via email as soon as your review is processed.</p>
+
+                  <div style={{ width: 'max-content', marginTop: '16px' }}>
+                    <Button
+                      onClick={handleReviewSubmit}
+                      label='Submit'
+                      disabled={!reviewFormValid}
+                    />
+                  </div>
+
+                </div>
+              </div>
+            </Box>
+          </Modal>
         </>
       )}
     </>

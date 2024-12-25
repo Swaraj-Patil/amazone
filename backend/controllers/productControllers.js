@@ -124,14 +124,19 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Create a new Review or Update existing review
 exports.createReview = catchAsyncErrors(async (req, res, next) => {
-    const { rating, title, comment, productId, profile } = req.body
-
+    const { rating, title, comment, productId, profileID, profileURL } = req.body
+    const profile = {
+        public_id: profileID,
+        url: profileURL
+    }
+    console.log('profile', profile)
     const review = {
         user: req.user._id,
         name: req.user.name,
         rating: Number(rating),
         title,
         comment,
+        profile
     }
 
     const product = await Products.findById(productId)

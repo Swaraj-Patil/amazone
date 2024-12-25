@@ -187,6 +187,7 @@ const CreateProduct = () => {
                                 inputProps={{
                                     id: 'stock',
                                     name: 'stock',
+                                    type: 'number'
                                 }}
                                 value={stock}
                                 onChange={(newValue) => setStock(newValue)}

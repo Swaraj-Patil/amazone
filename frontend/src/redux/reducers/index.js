@@ -1,11 +1,22 @@
 import { combineReducers } from "redux";
-import { createProductReducer, productDetailsReducer, productsReducer } from "./productReducers";
+import {
+    createProductReducer,
+    newReviewReducer,
+    productDetailsReducer,
+    productReviewsReducer,
+    productsReducer,
+    reviewReducer
+} from "./productReducers";
 import { forgotPasswordReducer, profileReducer, userReducer } from "./userReducer";
 import { cartReducer } from "./cartReducer";
-// import { toastsReducer as toasts } from 'react-toastify-redux'
-
 import { register } from 'swiper/element/bundle'
-import { addressReducer, createAddressReducer, getAddressesReducer, getCountriesReducer, getStatesReducer } from "./addressReducer";
+import {
+    addressReducer,
+    createAddressReducer,
+    getAddressesReducer,
+    getCountriesReducer,
+    getStatesReducer
+} from "./addressReducer";
 import paymentReducer from "./paymentReducer";
 import { myOrdersReducer, orderReducer } from "./orderReducer";
 import { adminReducer } from "./adminReducer";
@@ -18,6 +29,9 @@ const rootReducer = combineReducers({
     user: userReducer,
     profile: profileReducer,
     forgotPassword: forgotPasswordReducer,
+    createReview: newReviewReducer,
+    productReviews: productReviewsReducer,
+    review: reviewReducer,
     cart: cartReducer,
     createAddress: createAddressReducer,
     allAddresses: getAddressesReducer,
